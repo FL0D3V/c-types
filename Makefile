@@ -1,17 +1,16 @@
-C				:= gcc
-CFLAGS		:= -Wall -Wextra -Wswitch-enum -std=c11 -pedantic -ggdb
-LDLIBS		:= 
-LDFLAGS		:= 
-TARGET		:= ctypesDemo
+CC := gcc
+CFLAGS := -Wall -Wextra -Wswitch-enum -std=c11 -pedantic -ggdb
+LDLIBS := 
+LDFLAGS := 
+TARGET := ctypesDemo
 
-SRC_DIR		:= src
-OBJ_DIR		:= obj
-BIN_DIR		:= bin
+SRC_DIR := src
+OBJ_DIR	:= obj
+BIN_DIR	:= bin
 
-EXE				:= $(BIN_DIR)/$(TARGET)
-SRC				:= $(wildcard $(SRC_DIR)/*.c)
-OBJ				:= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-
+EXE := $(BIN_DIR)/$(TARGET)
+SRC := $(wildcard $(SRC_DIR)/*.c)
+OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(EXE)
 
@@ -32,7 +31,6 @@ clean:
 
 run: $(EXE)
 	./$(EXE)
-	
 
 .PHONY: all check clean
 
