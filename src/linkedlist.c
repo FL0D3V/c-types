@@ -92,6 +92,23 @@ node_t* ll_insert_after(node_t* after, size_t data)
   return newNode;
 }
 
+node_t* ll_insert_at(node_t** headRef, size_t index, size_t data)
+{
+  assert(*headRef && "Given 'headRef' was NULL!");
+
+  if (index <= 0)
+    ll_insert_at_beginning(headRef, data);
+
+  node_t* tmp = (*headRef)->next;
+
+  for (size_t i = 0; tmp && i < index - 2; ++i)
+    tmp = tmp->next;
+  
+  // TODO: Rethink if this should be an assert!
+  assert(tmp && "Out of bounds!");
+
+  return ll_insert_after(tmp, data);
+}
 
 void ll_delete(node_t* node)
 {
@@ -109,13 +126,33 @@ void ll_delete(node_t* node)
   free(node);
 }
 
+void ll_delete_at(node_t** headRef, size_t index)
+{
+  assert(*headRef && "Given 'headRef' was NULL");
+  
+  if (index <= 0)
+    ll_delete_from_beginning(headRef);
+
+  node_t* tmp = (*headRef)->next;
+
+  for (size_t i = 0; tmp && i < index; ++i)
+    tmp = tmp->next;
+
+  // TODO: Rethink if this should be an assert!
+  assert(tmp && "Out of bounds!");
+
+  ll_delete(tmp);
+}
+
 void ll_delete_from_beginning(node_t** headRef)
 {
   assert(*headRef && "Given 'headRef' was NULL!");
   
   node_t* tmp = *headRef;
+  
   *headRef = (*headRef)->next;
   (*headRef)->prev = NULL;
+
   free(tmp);
 }
 

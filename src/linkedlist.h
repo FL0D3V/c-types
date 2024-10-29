@@ -7,7 +7,6 @@
 
 // Datatypes
 typedef struct node {
-  // TODO: Rethink if the node should store a reference to the linked-list.
   struct node* prev;
   struct node* next;
   size_t data;
@@ -26,9 +25,11 @@ bool is_middle_node(node_t* node);
 void ll_insert_at_beginning(node_t** headRef, size_t data);
 node_t* ll_insert_at_end(node_t** headRef, size_t data);
 node_t* ll_insert_after(node_t* after, size_t data);
+node_t* ll_insert_at(node_t** headRef, size_t index, size_t data);
 
 // Deleting
 void ll_delete(node_t* node);
+void ll_delete_at(node_t** headRed, size_t index);
 void ll_delete_from_beginning(node_t** headRef);
 void ll_delete_from_end(node_t** headRef);
 void ll_free(node_t** headRef);

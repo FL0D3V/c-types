@@ -12,6 +12,7 @@ int main()
   // Example 1
   {
     printf("Example 1:\n");
+    printf("Testing insert-at-beginning and different printing variations:\n");
   
     for (size_t i = 0; i < COUNT; ++i)
       ll_insert_at_beginning(&head, i);
@@ -30,6 +31,7 @@ int main()
   // Example 2
   {
     printf("Example 2:\n");
+    printf("Testing insert at end:\n");
   
     size_t i = 0; 
     
@@ -50,6 +52,7 @@ int main()
   // Example 3
   {
     printf("Example 3:\n");
+    printf("Testing insert-after and insert-at-beginning with different variations:\n");
   
     size_t i = 0;
     
@@ -97,16 +100,14 @@ int main()
     for (; i < COUNT; ++i)
         fillTemp = ll_insert_after(fillTemp, i);
 
-    size_t cursor = 0, start = 50, range = 10;
+    size_t start = 50, range = 10;
     node_t* current = head;
   
     printf("Deleting inclusive from index %zu to exclusive %zu:\n", start, start + range);
 
     // Go forward till the start of the deletion range.
-    while (current && cursor < start) {
+    for (size_t cursor = 0; current && cursor < start; ++cursor)
       current = current->next;
-      ++cursor;
-    }
   
     // Delete the selected range.
     node_t* tmp = current;
@@ -145,6 +146,51 @@ int main()
     //ll_delete(head);
     ll_delete_from_beginning(&head);
   
+    printf("Printing normally:\n");
+    ll_print(head);
+
+    ll_free(&head);
+
+    printf("\n");
+  }
+
+
+  // Example 6
+  {
+    const size_t INSERT_AT_INDEX = COUNT / 2;
+
+    printf("Example 6:\n");
+    printf("Trying to insert and delete at index=%zu:\n", INSERT_AT_INDEX);
+
+    // Inserting till the specified index to test on a full list.
+    size_t i = 0;
+
+    ll_insert_at_beginning(&head, i++);
+
+    node_t* tmp = head;
+    
+    // Insert only halve the values with this method just to have enough room
+    // for the rest.
+    for (; i < INSERT_AT_INDEX; ++i)
+      tmp = ll_insert_after(tmp, i);
+    
+    size_t finalIndex = i;
+
+    // Testing the insertion at a specific index.
+    for (; i < COUNT; ++i)
+      ll_insert_at(&head, finalIndex, i);
+    
+    printf("Printing normally:\n");
+    ll_print(head);
+    
+    // Testing the deletion at the index.
+    const size_t DELETE_AT_INDEX = INSERT_AT_INDEX + COUNT / 4;
+    
+    printf("Deleting at a specific index:\n");
+    
+    for (size_t di = 0; di < 10; ++di)
+      ll_delete_at(&head, DELETE_AT_INDEX);
+    
     printf("Printing normally:\n");
     ll_print(head);
 
