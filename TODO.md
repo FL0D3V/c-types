@@ -1,6 +1,7 @@
 # TODO
 
 ## Types:
+[ ] - String
 [X] - Linked-List
 [ ] - Stack
 [ ] - Queue
@@ -8,8 +9,10 @@
 [ ] - Binary Tree (maybe b+ tree)
 [ ] - Priority Queue
 [ ] - Graph
+[ ] - Arena Allocator
 
 ## Algorithms and other CS topics
+[ ] - String functions
 [ ] - Sorting (e.g.: Bubble sort, Quicksort, Merge sort, Heapsort)
 [ ] - Greedy algorithm
 [ ] - Dynamic programming
