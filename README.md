@@ -3,7 +3,7 @@ A small and compact c lib which contains custom simple to complex c-types like e
 
 # build
 Just run the following commands to build and test the demo.
-<br>
+
 ```
 make
 ```
@@ -20,3 +20,7 @@ Cleans the project from all build/object files.
 make remake
 ```
 This command tries to clean the project and then it builds it again.
+```
+make check
+```
+Runs 'valgrind' to check for memory leaks.

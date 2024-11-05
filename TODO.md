@@ -1,6 +1,7 @@
 # TODO
 
 ## Types:
+[X] - Dynamic-Array and String-Builder
 [ ] - String
 [X] - Linked-List
 [ ] - Stack
