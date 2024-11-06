@@ -4,8 +4,10 @@
 
 The implementation of custom types simple to complex.
 
-- [X] Dynamic-Array and String-Builder
+- [X] Dynamic-Array
+- [X] String-Builder
 - [ ] String
+- [X] String-Slice
 - [X] Linked-List
 - [ ] Stack
 - [ ] Queue

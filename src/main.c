@@ -1,13 +1,26 @@
 #include <stdio.h>
 
 #include "linkedlist.h"
+#include "darray.h"
+#include "stringslice.h"
 
 #define COUNT 100
 
+void test_linked_list();
+void test_dynamic_array_and_string_slice();
+
 int main()
 {
-  node_t* head = NULL;
+  test_linked_list();
 
+  test_dynamic_array_and_string_slice();
+}
+
+void test_linked_list()
+{
+  printf("Testing the linked-list\n\n");
+
+  node_t* head = NULL;
 
   // Example 1
   {
@@ -48,7 +61,6 @@ int main()
     printf("\n");
   }
 
-
   // Example 3
   {
     printf("Example 3:\n");
@@ -79,11 +91,10 @@ int main()
     printf("Printing reversed:\n");
     ll_print_ex(head, true);
 
-    ll_free(&head);
+ll_free(&head);
 
     printf("\n");
   }
-
 
   // Example 4
   {
@@ -125,7 +136,6 @@ int main()
 
     printf("\n");
   }
-  
 
   // Example 5
   {
@@ -153,7 +163,6 @@ int main()
 
     printf("\n");
   }
-
 
   // Example 6
   {
@@ -198,4 +207,37 @@ int main()
 
     printf("\n");
   }
+}
+
+
+void test_dynamic_array_and_string_slice()
+{
+  printf("Testing the dynamic-array and string-slice\n\n");
+
+  string_slice_t ss = {0};
+  string_builder_t sb = {0};
+
+  const char* input = "   a b c 1 2 3  ";
+
+  ss_init(&ss, input);
+
+  printf("Input='%s', Length='%zu'\n", input, strlen(input));
+
+  while (ss_in_range(&ss))
+  {
+    ss_seek_spaces(&ss);
+
+    if (!ss_in_range(&ss))
+      break;
+
+    sb_append_char(&sb, ss_get_current(&ss));
+
+    ss_seek(&ss);
+  }
+
+  printf("Checked='%s'; Length='%zu'\n", sb.items, sb.count);
+
+  printf("\n");
+
+  sb_free(sb);
 }
