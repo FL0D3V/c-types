@@ -1,8 +1,8 @@
 CC := gcc
-CFLAGS := -Wall -Wextra -Wswitch-enum -std=c11 -pedantic -ggdb
+CFLAGS := -Wall -Wextra -Werror -Wswitch-enum -std=c11 -pedantic -ggdb
 LDLIBS := 
 LDFLAGS := 
-TARGET := ccalc
+TARGET := cTypeTest
 
 SRC_DIR := src
 OBJ_DIR	:= obj
