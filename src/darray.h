@@ -54,7 +54,7 @@ size_t ptr_diff(const void* start, const void* curr)
   } while (0)
 
 // Append several items to a dynamic array
-#define da_append_many(da, new_items, new_items_count)                                      \
+#define da_append_many(da, new_items, new_items_count)                                          \
     do {                                                                                        \
       if ((da)->count + new_items_count > (da)->capacity) {                                     \
         if ((da)->capacity == 0) {                                                              \
@@ -108,6 +108,14 @@ typedef struct {
 // Append a single NULL character at the end of a string builder. So then you can
 // use it a NULL-terminated C string
 #define sb_append_null(sb) da_append_many(sb, "", 1)
+
+#define sb_append_buf_with_null_termination(sb, buf, size) do { sb_append_buf(sb, buf, size); sb_append_null(sb); } while (0)
+
+#define sb_clear(sb)                      \
+  do {                                    \
+    memset((sb)->items, 0, (sb)->count);  \
+    (sb)->count = 0;                      \
+  } while (0)
 
 // Free the memory allocated by a string builder
 #define sb_free(sb) da_free(sb)
