@@ -6,6 +6,7 @@ The implementation of custom types simple to complex.
 
 - [X] Dynamic-Array
 - [X] String-Builder
+- [X] Arena Allocator
 - [ ] String
 - [X] String-Slice
 - [X] Linked-List
@@ -15,7 +16,6 @@ The implementation of custom types simple to complex.
 - [ ] Binary Tree (maybe b+ tree)
 - [ ] Priority Queue
 - [ ] Graph
-- [ ] Arena Allocator
 
 ## Algorithms and other CS topics
 
